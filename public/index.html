@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jadwal Sholat</title>
+
+    <!-- Beginning Of Styling -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+    <!-- End Of Styling -->
+</head>
+
+<body>
+    <header>
+        <table class="table_azan content-center -border text-xs" cellspacing="0" cellpadding="2">
+            <tr class="table_title">
+                <td colspan="9" class="content-center font-bold text-white" align="center">
+                    <h1 class="text-base">
+                        JADWAL SHOLAT UNTUK $(KOTA) DAN SEKITARNYA
+                        <br />$(WIB) / $(GMT)
+                    </h1>
+                    <h2 class="text-xl h2_class">$BULAN - TAHUN</h2>
+                </td>
+            </tr>
+            <tr class="table_navigasi">
+                <td colspan="9">
+                    <table cellspacing="0" cellpadding="2" width="100%">
+                        <tr class="table_navigasi" align="center">
+                            <td>
+                                Pilih Kota
+                                <button>
+                                    <select name="kota" class="inputcity" onchange="change_page()"></select>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr class="table_header" align="center">
+                <td><b>Tanggal</b></td>
+                <td><b>Imsak</b></td>
+                <td><b>Subuh</b></td>
+                <td><b>Terbit</b></td>
+                <td><b>Dhuha</b></td>
+                <td><b>Dhuhur</b></td>
+                <td><b>Ashar</b></td>
+                <td><b>Magrhib</b></td>
+                <td><b>Isya</b></td>
+            </tr>
+            <tr class="table_header table_dark" align="center">
+                <td><b>$(tanggal)</b></td>
+                <td>$(imsak)</td>
+                <td>$(subuh)</td>
+                <td>$(terbit)</td>
+                <td>$(dhuha)</td>
+                <td>$(dhuhur)</td>
+                <td>$(ashar)</td>
+                <td>$(magrhib)</td>
+                <td>$(isya)</td>
+            </tr>
+            <tr class="table_header table_light" align="center">
+                <td><b>$(tanggal)</b></td>
+                <td>$(imsak)</td>
+                <td>$(subuh)</td>
+                <td>$(terbit)</td>
+                <td>$(dhuha)</td>
+                <td>$(dhuhur)</td>
+                <td>$(ashar)</td>
+                <td>$(magrhib)</td>
+                <td>$(isya)</td>
+            </tr>
+            <tr class="table_header table_highlight" align="center">
+                <td><b>$(tanggal)</b></td>
+                <td>$(imsak)</td>
+                <td>$(subuh)</td>
+                <td>$(terbit)</td>
+                <td>$(dhuha)</td>
+                <td>$(dhuhur)</td>
+                <td>$(ashar)</td>
+                <td>$(magrhib)</td>
+                <td>$(isya)</td>
+            </tr>
+        </table>
+    </header>
+</body>
+
+</html>
