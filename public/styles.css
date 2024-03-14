@@ -15,12 +15,17 @@
 }
 
 .h2_class {
-    background-color: #;
+    background-color: #14b05f;
+    margin-top: 5px;
 }
 
 .table_title {
     background-color: #14b05d;
     font-size: 14px;
+}
+
+.table_navigasi {
+background-color: #1AE865;
 }
 
 .table_dark {
