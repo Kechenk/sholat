@@ -38,23 +38,47 @@ function populateCityDropdown() {
         .catch((error) => console.error("Error fetching cities:", error));
 }
 
-// function fetchPrayerTimes() {
-    // var selectedCityId = document.getElementById("citySelect").value;
-    // var selectedProvinceName = document.getElementById("provinceSelect").value; // Retrieve province value instead of text
-    // var selectedCityName = document.getElementById("citySelect").options[document.getElementById("citySelect").selectedIndex].text;
-// 
-    // if (!selectedCityId || !selectedProvinceName) return; // If no city or province selected, exit the function
-// 
-    // fetchPrayerTimesData(selectedCityId, selectedCityName, selectedProvinceName);
-// }
-
 
 function fetchPrayerTimes() {
     var selectedCityId = document.getElementById("citySelect").value;
-    var selectedProvinceName = document.getElementById("provinceSelect").value; // Retrieve province value instead of text
     var selectedCityName = document.getElementById("citySelect").options[document.getElementById("citySelect").selectedIndex].text;
+    var selectedProvinceName = document.getElementById("provinceSelect").options[document.getElementById("provinceSelect").selectedIndex].text;
 
     if (!selectedCityId || !selectedProvinceName) return; // If no city or province selected, exit the function
+
+    fetchPrayerTimesData(selectedCityId, selectedCityName, selectedProvinceName);
+}
+
+function fetchPrayerTimesData(cityId, _cityName, provinceName) {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    var apiUrl = `https://api.aladhan.com/v1/calendarByCity/${year}/${month}?city=${cityId}&country=Indonesia&method=2`;
+
+    fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            var prayerTimes = data.data;
+            var cityFromApi = data.data[0].meta.city;
+
+            // Update city name and province
+            document.getElementById("city").innerText = cityFromApi;
+            document.getElementById("province").innerText = provinceName;
+
+            // Display prayer times in the table
+            displayPrayerTimes(prayerTimes);
+        })
+        .catch((error) => console.error("Error fetching prayer times:", error));
+}
+
+
+/*
+function fetchPrayerTimes() {
+    var selectedCityId = document.getElementById("citySelect").value;
+    var selectedCityName = document.getElementById("citySelect").options[document.getElementById("citySelect").selectedIndex].text;
+    var selectedProvinceName = document.getElementById("provinceSelect").value; // Retrieve province value instead of text
+
+    // if (!selectedCityId || !selectedProvinceName) return; // If no city or province selected, exit the function
 
     fetchPrayerTimesData(selectedCityId, selectedCityName, selectedProvinceName);
 }
@@ -70,10 +94,10 @@ function fetchPrayerTimesData(cityId, provinceName) {
         .then((response) => response.json())
         .then((data) => {
             var prayerTimes = data.data;
-            var cityName = data.data[0].meta.city;
+            var timezone = data.data[0].timezones;
 
             // Update city name and province
-            document.getElementById("city").innerText = cityName;
+            document.getElementById("timezone").innerText = timezone;
             document.getElementById("province").innerText = provinceName;
 
             // Display prayer times in the table
@@ -81,6 +105,7 @@ function fetchPrayerTimesData(cityId, provinceName) {
         })
         .catch((error) => console.error("Error fetching prayer times:", error));
 }
+*/
 
 function displayPrayerTimes(prayerTimes) {
     var table = document.querySelector(".table_azan");
