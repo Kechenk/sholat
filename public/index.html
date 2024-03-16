@@ -9,7 +9,7 @@
     <!-- Beginning Of Styling -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js"></script>
+    <script src="skrip.js"></script>
     <!-- End Of Styling -->
 </head>
 
@@ -19,10 +19,12 @@
             <tr class="table_title">
                 <td colspan="9" class="content-center font-bold text-white" align="center">
                     <h1 class="text-base">
-                        JADWAL SHOLAT UNTUK $(KOTA) DAN SEKITARNYA
-                        <br />$(WIB) / $(GMT)
+                        JADWAL SHOLAT UNTUK <span id ="kota">KOTA</span> DAN SEKITARNYA
+                        <br><span id="timezone">WIB</span>
                     </h1>
-                    <h2 class="text-xl h2_class">$BULAN - TAHUN</h2>
+                    <span>
+                        <h2 class="text-xl h2_class" id="month_year"></h2>
+                    </span>
                 </td>
             </tr>
             <tr class="table_navigasi">
@@ -32,18 +34,20 @@
                             <td>
                                 Pilih Provinsi
                                 <button>
-                                    <select name="provinsi" class="inputcity" onchange="change_page()"></select>
+                                    <select name="provinsi" id="pilihProvinsi" class="inputcity" onchange="dropdownKota()"></select>
                                 </button>
                             <td>
                                 Pilih Kota
                                 <button>
-                                    <select name="kota" class="inputcity" onchange="change_page()"></select>
+                                    <select name="kota" id="pilihKota" class="inputcity" onchange="change_page()"></select>
                                 </button>
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
+        </header>
+
             <tr class="table_header" align="center">
                 <td><b>Tanggal</b></td>
                 <td><b>Imsak</b></td>
@@ -55,7 +59,7 @@
                 <td><b>Isya</b></td>
             </tr>
         </table>
-    </header>
+    
 </body>
 
 </html>
