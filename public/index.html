@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jadwal Sholat</title>
+    <title>index</title>
 
     <!-- Beginning Of Styling -->
     <link rel="stylesheet" href="style.css" />
@@ -19,8 +19,9 @@
             <tr class="table_title">
                 <td colspan="9" class="content-center font-bold text-white" align="center">
                     <h1 class="text-base">
-                        JADWAL SHOLAT UNTUK <span id ="kota">KOTA</span> DAN SEKITARNYA
+                        JADWAL SHOLAT UNTUK <span id ="city">KOTA</span> DAN SEKITARNYA
                         <br><span id="timezone">WIB</span>
+                        <br><span id="current_time"></span>
                     </h1>
                     <span>
                         <h2 class="text-xl h2_class" id="month_year"></h2>
@@ -39,7 +40,7 @@
                             <td>
                                 Pilih Kota
                                 <button>
-                                    <select name="kota" id="pilihKota" class="inputcity" onchange="change_page()"></select>
+                                    <select name="kota" id="pilihKota" class="inputcity" onchange="jamSholat()"></select>
                                 </button>
                             </td>
                         </tr>
@@ -52,7 +53,7 @@
                 <td><b>Tanggal</b></td>
                 <td><b>Imsak</b></td>
                 <td><b>Subuh</b></td>
-                <td><b>Dhuha</b></td>
+                <td><b>Terbit</b></td>
                 <td><b>Dhuhur</b></td>
                 <td><b>Ashar</b></td>
                 <td><b>Magrhib</b></td>
