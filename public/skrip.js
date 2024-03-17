@@ -21,19 +21,13 @@ function dropdownKota() {
     .then((response) => response.json())
     .then((data) => {
       var pilihKota = document.getElementById("pilihKota");
-
-      // Clear existing options
       pilihKota.innerHTML = "";
-
-      // Add new options
       data.forEach((city) => {
         var option = document.createElement("option");
         option.value = city.id;
         option.textContent = city.name;
         pilihKota.appendChild(option);
       });
-
-      // Trigger change event on the select element to update the selected city
       pilihKota.dispatchEvent(new Event("change"));
     });
   console.log(idProvinsi);
@@ -45,36 +39,40 @@ function jamSholat() {
   var today = new Date();
   var year = today.getFullYear();
   var month = today.getMonth() + 1;
+  var monthNames = [
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+  ];
   var api = `https://api.aladhan.com/v1/calendarByCity/${year}/${month}?city=${namaKota}&country=Indonesia&method=20`;
-
   fetch(api)
     .then((response) => response.json())
     .then((data) => {
       var waktuSholat = data.data;
-      var monthYear = `${month} - ${year}`;
-      document.getElementById("city").innerText = namaKota; // Update city name
+      var monthYear = `${monthNames[month - 1]} - ${year}`;
+      document.getElementById("city").innerText = namaKota; 
       document.getElementById("month_year").innerText = monthYear;
       var table = document.querySelector(".data_sholat");
-      table.innerHTML = ""; // Clear table content
+      table.innerHTML = ""; 
       displayWaktuSholat(waktuSholat);
       displayTime(); 
     });
-  console.log(namaKota);
+    //console.log
 }
+
 
 function displayWaktuSholat(waktuSholat) {
   var table = document.querySelector(".data_sholat");
   table.innerHTML = "";
-  var today = new Date().getDate(); // Get the current date
+  var today = new Date().getDate();
   waktuSholat.forEach((day, index) => {
     var row = document.createElement("tr");
-    var className = index % 2 === 0 ? "table_dark" : "table_light"; // Alternate between table_dark and table_light for even and odd days
-    if (index + 1 === today) { // Check if it's today
-      className = "table_highlight"; // Set the class to table_highlight for today
+    var className = index % 2 === 0 ? "table_dark" : "table_light"; 
+    if (index + 1 === today) { 
+      className = "table_highlight"; 
     }
-    row.className = "table_row " + className; // Add the calculated class to the row
+    row.className = "table_row " + className; 
     row.innerHTML = `
-        <td>${day.date.gregorian.day}</td>
+        <td>${day.date.gregorian.day} / ${day.date.hijri.day} </td>
         <td>${day.timings.Imsak}</td>
         <td><b>${day.timings.Fajr}</b></td>
         <td>${day.timings.Sunrise}</td>
@@ -96,7 +94,7 @@ function displayTime() {
     var minutes = currentTime.getMinutes().toString().padStart(2, "0");
     var seconds = currentTime.getSeconds().toString().padStart(2, "0");
     currentTimeElement.innerText = `${hours}:${minutes}:${seconds}`;
-  }, 1000); // Update every second
+  }, 1000);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
