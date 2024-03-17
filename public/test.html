@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>test</title>
+    <title>Jadwal Sholat</title>
 
     <!-- Beginning Of Styling -->
     <link rel="stylesheet" href="style.css" />
@@ -140,12 +140,11 @@
                 var hours = currentTime.getHours().toString().padStart(2, '0');
                 var minutes = currentTime.getMinutes().toString().padStart(2, '0');
                 var seconds = currentTime.getSeconds().toString().padStart(2, '0');
-                currentTimeElement.innerText = `${hours}:${minutes}:${seconds}`;
+                currentTimeElement.innerText = `Current Time: ${hours}:${minutes}:${seconds} GMT+7`;
             }, 1000); // Update every second
         }
 
         populateProvinceDropdown();
-        displayCurrentTime();
     </script>
 </body>
 
