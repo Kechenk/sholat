@@ -76,11 +76,11 @@ function displayWaktuSholat(waktuSholat) {
     row.innerHTML = `
         <td>${day.date.gregorian.day}</td>
         <td>${day.timings.Imsak}</td>
-        <td>${day.timings.Fajr}</td>
+        <td><b>${day.timings.Fajr}</b></td>
         <td>${day.timings.Sunrise}</td>
         <td>${day.timings.Dhuhr}</td>
         <td>${day.timings.Asr}</td>
-        <td>${day.timings.Maghrib}</td>
+        <td><b>${day.timings.Maghrib}</b></td>
         <td>${day.timings.Isha}</td>
     `;
     table.appendChild(row);
