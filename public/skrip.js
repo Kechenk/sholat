@@ -64,21 +64,29 @@ function jamSholat() {
 
 function displayWaktuSholat(waktuSholat) {
   var table = document.querySelector(".data_sholat");
-  waktuSholat.forEach((day) => {
+  table.innerHTML = "";
+  var today = new Date().getDate(); // Get the current date
+  waktuSholat.forEach((day, index) => {
     var row = document.createElement("tr");
+    var className = index % 2 === 0 ? "table_dark" : "table_light"; // Alternate between table_dark and table_light for even and odd days
+    if (index + 1 === today) { // Check if it's today
+      className = "table_highlight"; // Set the class to table_highlight for today
+    }
+    row.className = "table_row " + className; // Add the calculated class to the row
     row.innerHTML = `
-            <td>${day.date.gregorian.day}</td>
-            <td>${day.timings.Imsak}</td>
-            <td>${day.timings.Fajr}</td>
-            <td>${day.timings.Sunrise}</td>
-            <td>${day.timings.Dhuhr}</td>
-            <td>${day.timings.Asr}</td>
-            <td>${day.timings.Maghrib}</td>
-            <td>${day.timings.Isha}</td>
-        `;
+        <td>${day.date.gregorian.day}</td>
+        <td>${day.timings.Imsak}</td>
+        <td>${day.timings.Fajr}</td>
+        <td>${day.timings.Sunrise}</td>
+        <td>${day.timings.Dhuhr}</td>
+        <td>${day.timings.Asr}</td>
+        <td>${day.timings.Maghrib}</td>
+        <td>${day.timings.Isha}</td>
+    `;
     table.appendChild(row);
   });
 }
+
 
 function displayTime() {
   var currentTimeElement = document.getElementById("current_time");
